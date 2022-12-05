@@ -41,6 +41,8 @@ SELECT isim,maas,sehir FROM calisanlar2
 WHERE isyeri IN (SELECT marka_isim FROM markalar WHERE marka_id>101);
 
 --ÖDEV- Ankara’da calisani olan markalarin marka id'lerini ve calisan sayilarini listeleyiniz.
+SELECT marka_id,calisan_sayisi FROM markalar
+WHERE marka_isim IN ( SELECT isyeri FROM calisanlar2 WHERE sehir='Ankara');
 
 
 -- AGGREGATE METHOD
@@ -160,6 +162,9 @@ WHERE exists (SELECT urun_isim FROM mart WHERE mart.urun_isim=nisan.urun_isim);
 ODEV: Her iki ayda ortak satilmayan ürünlerin URUN_ISIM'lerini ve  bu ürünleri
  NİSAN ayında satın alan MUSTERI_ISIM'lerini listeleyen bir sorgu yazınız.
  */
+SELECT urun_isim,musteri_isim FROM  nisan
+WHERE not exists (SELECT urun_isim FROM mart WHERE  mart.urun_isim=nisan.urun_isim);
+
 
 --***** DML ==> UPDATE **** ----
 
