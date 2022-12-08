@@ -45,6 +45,13 @@ select * from musteriler where isim like '_a%'
 select * from musteriler where isim like '__s%'
 
 
+--Ucuncu harfi s olan ismi 4 harfli musterilerin tum bilgilerini yazdiran QUERY yazin
+select * from musteriler where isim  '_s';
+--Ilk harfi F olan en az 4 harfli musterilerin tum bilgilerini yazdiran QUERY yazin
+select * from musteriler where isim  'F___%';
+--Ikinci harfi a,4.harfi m olan musterilerin tum bilgilerini yazdiran QUERY yazin
+select * from musteriler where isim ~~ '_a_m%';
+
  ---- REGEXP_LIKE
     /*
 	REGEXP_LIKE =>Daha karmaşık sorgular için herhangi bir kod, metin icerisinde istenilen yazi
@@ -84,7 +91,14 @@ select * from kelimeler where kelime ~* '[mf]$' --biten diyince $ isareti kullan
 
 --NOT LIKE
 --ODEV
-
+--SORU 1 : ilk harfi h olmayan kelimelerin tum bilgilerini yazdiran QUERY yazin
+select * from kelimeler where kelime NOT LIKE 'h%';
+--SORU 2 : a harfi icermeyen kelimelerin tum bilgilerini yazdiran QUERY yazin
+select * from kelimeler where kelime NOT LIKE '%a%';
+--SORU 3 : ikinci ve ucuncu harfi ‘de’ olmayan kelimelerin tum bilgilerini yazdiran QUERY yazin
+select * from kelimeler where kelime NOT LIKE '_de%';
+--SORU 4 : 2. harfi e,i veya o olmayan kelimelerin tum bilgilerini yazdiran QUERY yazin
+select * from kelimeler where kelime !~ '[_eio]';
 
 /*
 LIKE = ~~
